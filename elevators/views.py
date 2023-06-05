@@ -35,10 +35,12 @@ class ElevatorSystemDetailView(generics.ListAPIView):
     serializer_class = ElevatorSerializer
 
     
-class ElevatorSystemDetailUpdateView(generics.ListCreateAPIView):
+class ElevatorSystemDetailUpdateView(generics.RetrieveUpdateAPIView):
     
-    lookup_field = 'elevator_system'
+    lookup_field = 'id'
     queryset = Elevator.objects.all()
     serializer_class = ElevatorSerializer
      
-    # ElevatorSystemDetailUpdateView
+# class ElevatorRequestView(generics.GenericAPIView):
+    
+    
