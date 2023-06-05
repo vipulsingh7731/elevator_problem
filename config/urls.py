@@ -16,6 +16,7 @@ urlpatterns = [
     path("users/", include("elevator_prob.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+    path("elevator_system/", include("elevators.urls", namespace="elevators"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS
