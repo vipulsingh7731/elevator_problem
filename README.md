@@ -7,6 +7,33 @@ Behold My Awesome Project!
 
 License: MIT
 
+## Thought Process
+I have tried to make the API and model w.r.t. an external Elevator System, since the Elevator System can be quite complex with multiple elevators. 
+The models present are **ElevatorSystem** (so the system can have multiple elevator systems), **Elevator** (Each elevator is assoiciated with an Elevator system and has all the required functionalities told in problem statement), **ElevatorRequest** (which are all the requests generated, fulfilled or not regardless. Each is associated with an **Elevator** and an **ElevatorSystem**).
+
+## Architecture
+    
+ ### Urls.py
+    
+ *[GET Only]* - Gets all the elevator's current state for an elevator system
+            
+    $ path('elevator_system/<int:pk>/', views.ElevatorSystemDetailView.as_view(), name='elevator_system_detail'), 
+ *[GET, POST]* - Detailed View of an elevator
+  
+    $ path('elevator_system/<int:elev_system>/elevator/<int:id>/', ...as_view(), name='detail_update_elevator'),
+ *[GET, POST]* - Fetches all the requests "unfulfilled" for a given elevator, and all requests for a particular elevator should POST here
+    
+    $ path('elevator_system/<int:elev_system>/elevator/<int:id>/requests/', ...as_view(), name='detail_elevator_requests'), 
+ *[GET Only]*  - Fetch the current direction for a given elevator
+   
+    $ path('elevator_system/<int:elev_system>/elevator/<int:id>/direction/', ...as_view(), name='elevator_direction'), 
+ *[GET, POST]* - Get operational status from here and Update it too from here
+    
+    $ path('elevator_system/<int:elev_system>/elevator/<int:pk>/operational/', ...as_view(), name='elevator_operational'), 
+ *[POST Only]* - Update Door status from here
+
+    $ path('elevator_system/<int:elev_system>/elevator/<int:pk>/door/', ...as_view(), name='elevator_door'), 
+
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
@@ -23,23 +50,6 @@ Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings
 
 For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
 
-### Type checks
-
-Running type checks with mypy:
-
-    $ mypy elevator_prob
-
-### Test coverage
-
-To run the tests, check your test coverage, and generate an HTML coverage report:
-
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
-
-#### Running tests with pytest
-
-    $ pytest
 
 ### Live reloading and Sass CSS compilation
 
