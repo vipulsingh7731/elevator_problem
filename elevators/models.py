@@ -31,13 +31,15 @@ class Elevator(models.Model):
 class ElevatorRequest(models.Model):
     id = models.AutoField(primary_key=True)
     elevator_system = models.ForeignKey(ElevatorSystem, on_delete=models.CASCADE)
+    elevator = models.ForeignKey(Elevator, on_delete=models.CASCADE)
     called_at = models.IntegerField(default=0)
-    destination_floor = models.IntegerField(default=0)
     DIRECTION_CHOICES = (
     ("1", "1"), #Up
     ("0", "0"), #Stationary
     ("-1", "-1"), #Down
     )
+    status = models.BooleanField( default=0) #0 = pending, 1 = completed
+    destination_floor = models.IntegerField(default=0)
     direction = models.CharField(max_length=2, choices=DIRECTION_CHOICES, default="1")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
