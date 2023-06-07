@@ -14,7 +14,9 @@ The models present are **ElevatorSystem** (so the system can have multiple eleva
 ## Architecture
     
  ### Urls.py
+ *[POST Only]* - Initialise the elevator system from this Endpoint
     
+    $ path('elevator_system/init/', views.ElevatorInitView.as_view(), name='elevator_list'),
  *[GET Only]* - Gets all the elevator's current state for an elevator system
             
     $ path('elevator_system/<int:pk>/', views.ElevatorSystemDetailView.as_view(), name='elevator_system_detail'), 
