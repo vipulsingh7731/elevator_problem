@@ -12,7 +12,7 @@ I have tried to make the API and model w.r.t. an external Elevator System, since
 The models present are **ElevatorSystem** (so the system can have multiple elevator systems), **Elevator** (Each elevator is assoiciated with an Elevator system and has all the required functionalities told in problem statement), **ElevatorRequest** (which are all the requests generated, fulfilled or not regardless. Each is associated with an **Elevator** and an **ElevatorSystem**).
 
 ## Architecture
-    
+A seperate app has been made named elevators which has the following structure.
  ### Urls.py
  *[POST Only]* - Initialise the elevator system from this Endpoint
     
@@ -35,7 +35,7 @@ The models present are **ElevatorSystem** (so the system can have multiple eleva
  *[POST Only]* - Update Door status from here
 
     $ path('elevator_system/<int:elev_system>/elevator/<int:pk>/door/', ...as_view(), name='elevator_door'), 
-### Models
+### Models.py
     class ElevatorSystem(models.Model):
         id = models.AutoField(primary_key=True, )
         name = models.CharField(max_length=200)
@@ -81,8 +81,11 @@ The models present are **ElevatorSystem** (so the system can have multiple eleva
 
         def __str__(self):
             return "Elevator System: " + str(self.elevator_system) + " Called At: " + str(self.called_at) 
+### Views.py and Serializers.py
+    
+    Have a look at the them in the django app elevators, it'll be too cluttered to show here.
 ## Setup
-Docker is required for this to run.
+Docker is required for it to run.
     For Local development, run
     
     $ docker-compose -f local.yml build
@@ -105,7 +108,7 @@ Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings
 
 - To create a **superuser account**, use this command:
 
-      $ python manage.py createsuperuser
+      $ docker-compose -f local.yml django run python manage.py createsuperuser
 
 For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
 
