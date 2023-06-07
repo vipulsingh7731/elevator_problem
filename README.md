@@ -84,7 +84,7 @@ A seperate app has been made named elevators which has the following structure.
 ### Views.py and Serializers.py
     
     Have a look at the them in the django app elevators, it'll be too cluttered to show here.
-## Setup
+## Deployment
 Docker is required for it to run.
     For Local development, run
     
@@ -117,9 +117,6 @@ For convenience, you can keep your normal user logged in on Chrome and your supe
 
 Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html#sass-compilation-live-reloading).
 
-## Deployment
-
-The following details how to deploy this application.
 
 ### Docker
 
