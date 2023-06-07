@@ -81,8 +81,18 @@ The models present are **ElevatorSystem** (so the system can have multiple eleva
 
         def __str__(self):
             return "Elevator System: " + str(self.elevator_system) + " Called At: " + str(self.called_at) 
-
-
+## Setup
+Docker is required for this to run.
+    For Local development, run
+    
+    $ docker-compose -f local.yml build
+Below command needs to be run whenever the service is used, "build" is not required to be run every time.
+    
+    $ docker-compose -f local.yml up
+For production, use
+    
+    $ docker-compose -f production.yml build
+    $ docker-compose -f production.yml up
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
